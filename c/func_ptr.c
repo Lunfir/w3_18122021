@@ -16,11 +16,16 @@ void handlerC(int inInput)
     printf("Case C: %d\n", inInput);
 }
 
+void wrapper(void (*funcPtr)(int))
+{
+    int processor = 42;
+
+    funcPtr(processor);
+}
 
 int main()
 {
-    int input;
-    int processor = 42;
+    int input;  
     void(*handlers[])(int) = { handlerA, handlerB, handlerC };
 
     // void(*handlers[3])(int);
@@ -30,7 +35,7 @@ int main()
 
     scanf("%d", &input); // 0, 1, 2
 
-    handlers[input](processor);
+    wrapper(handlers[input]);
 
     return 0;
 }
