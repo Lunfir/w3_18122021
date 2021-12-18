@@ -1,41 +1,36 @@
 #include <stdio.h>
 
-void fooA()
+
+void handlerA(int inInput)
 {
-    printf("fooA()\n");
+    printf("Case A: %d\n", inInput);
 }
 
-void fooB()
+void handlerB(int inInput)
 {
-    printf("fooB()\n");
+    printf("Case B: %d\n", inInput);
 }
 
-int bar(int inNumber)
+void handlerC(int inInput)
 {
-    printf("bar() %d\n", inNumber);
-
-    return inNumber;
+    printf("Case C: %d\n", inInput);
 }
+
 
 int main()
 {
-    int num = 42;
-    int* ptr; // declaration of ptr to int
-    ptr = &num;
+    int input;
+    int processor = 42;
+    void(*handlers[])(int) = { handlerA, handlerB, handlerC };
 
+    // void(*handlers[3])(int);
+    // handlers[0] = handlerA;
+    // handlers[1] = handlerB;
+    // handlers[2] = handlerC;
 
-    void(*funcPtr)(); // declaration of ptr to function  void ????()
-    funcPtr = &fooA;
-    printf("funcPtr A: %llu\n", funcPtr);
-    funcPtr = &fooB;
-    printf("funcPtr B: %llu\n", funcPtr);
-    (*funcPtr)();
+    scanf("%d", &input); // 0, 1, 2
 
-
-    int(*funcPtrWithParameter)(int); // declaration of ptr to function  int ????(int)
-    funcPtrWithParameter = &bar;
-    funcPtrWithParameter(42);
-
+    handlers[input](processor);
 
     return 0;
 }
