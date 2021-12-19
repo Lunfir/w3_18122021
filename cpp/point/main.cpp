@@ -27,16 +27,6 @@ struct Point
         this->y = other.y;
     }
 
-    void pointPrint() 
-    {
-        std::cout   << "(" 
-                    << this->x 
-                    << ", "
-                    << this->y 
-                    << ")" 
-            << std::endl;
-    }
-
     int pointEqual(Point other) 
     {
         return this->x == other.x && this->y == other.y;
@@ -89,25 +79,18 @@ int main()
 {
     // usual constructor
     Point pointA(12.2, 14.3);
-    Point pointB = Point(10.2, 1.3);
-    Point pointRes;
-
-    pointRes = pointB + pointA;
-    // pointRes.operator=(pointA.operator+(pointB));
 
     // copy constructor
-    // Point pointB(pointA);
-    // Point pointB = Point(pointA);
+    // Point pointRes = Point(pointA);
+    Point pointRes = pointA;
 
-    std::cout << "pointRes: " << pointRes << std::endl;
-    std::cout << "pointA:   " << pointA << std::endl;
-    std::cout << "pointB:   " << pointB << std::endl;
+    // assignment operator
+    // Point pointRes;
+    // pointRes = pointA; // pointRes.operator=(pointA);
 
-    // pointRes.pointPrint();
-    // pointA.pointPrint();
-    // pointB.pointPrint();
 
-    // std::cout << "is Equal: " << pointA.pointEqual(pointB) << std::endl;
+    std::cout << "pointRes:   " << pointRes << std::endl;
+    std::cout << "pointA:     " << pointA << std::endl;
 
     return 0;
 }
