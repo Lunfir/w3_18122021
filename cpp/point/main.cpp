@@ -6,6 +6,20 @@ struct Point
     double x;
     double y;
 
+    Point()
+    {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        this->x = 0;
+        this->y = 0;
+    }
+
+    Point(double inX, double inY)
+    {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        this->x = inX;
+        this->y = inY;
+    }
+
     void pointPrint() 
     {
         std::cout   << "(" 
@@ -30,8 +44,8 @@ struct Point
 
 int main()
 {
-    Point pointA;
-    Point pointB;
+    Point pointA(12.2, 14.3);
+    Point pointB = Point();
 
     pointA.x = 12.2;
     pointA.y = 14.3;
