@@ -1,20 +1,23 @@
 #include <iostream>
 #include <cstdlib>
 
+
+template <typename U>
 struct StackElement
 {
-    int value;
+    U value;
     StackElement* prev;
 };
 
 
+template <typename T>
 struct Stack
 {
-    StackElement* current = nullptr;
+    StackElement<T>* current = nullptr;
 
-    void push(int value)
+    void push(T value)
     {
-        StackElement* item = (StackElement*)malloc(sizeof(StackElement));
+        StackElement<T>* item = (StackElement<T>*)malloc(sizeof(StackElement<T>));
         if (item == nullptr)
         {
             std::cout << "Stack::push_error" << std::endl;
@@ -27,7 +30,7 @@ struct Stack
         current = item;
     }
 
-    int pop()
+    T pop()
     {
         if (this->empty())
         {
@@ -35,10 +38,10 @@ struct Stack
             return 0;
         }
 
-        int out;
+        T out;
         out = this->current->value;
 
-        StackElement* tmp = this->current;
+        StackElement<T>* tmp = this->current;
         this->current = this->current->prev;
         free(tmp);
 
@@ -52,11 +55,12 @@ struct Stack
 
 };
 
+
 int main()
 {
-    Stack stack;
+    Stack<float> stack;
 
-    for (int i = 1; i <= 25; i += 2)
+    for (double i = 1.17; i <= 25.32; i += 2.2)
     {
         stack.push(i);
     }
