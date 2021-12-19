@@ -20,6 +20,13 @@ struct Point
         this->y = inY;
     }
 
+    Point(const Point& other)
+    {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        this->x = other.x;
+        this->y = other.y;
+    }
+
     void pointPrint() 
     {
         std::cout   << "(" 
@@ -44,14 +51,16 @@ struct Point
 
 int main()
 {
+    // usual constructor
     Point pointA(12.2, 14.3);
-    Point pointB = Point();
+    // Point pointB = Point(10.2, 1.3);
 
-    pointA.x = 12.2;
-    pointA.y = 14.3;
+    // copy constructor
+    // Point pointB(pointA);
+    // Point pointB = Point(pointA);
+    Point pointB = pointA;
 
-    pointB.x = 10.2;
-    pointB.y = 1.3;
+    pointB = pointA;
 
     pointA.pointPrint();
     pointB.pointPrint();
