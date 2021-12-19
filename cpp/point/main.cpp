@@ -27,6 +27,11 @@ struct Point
         this->y = other.y;
     }
 
+    ~Point()
+    {
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+    }
+
     int pointEqual(Point other) 
     {
         return this->x == other.x && this->y == other.y;
@@ -79,18 +84,20 @@ int main()
 {
     // usual constructor
     Point pointA(12.2, 14.3);
+    Point pointB(12.2, 14.3);
+    Point pointC(12.2, 14.3);
 
     // copy constructor
     // Point pointRes = Point(pointA);
-    Point pointRes = pointA;
+    // Point pointRes = pointA + pointB + pointC;
+    // Point pointRes = (pointA.operator+(pointB)).operator+(pointC);
 
     // assignment operator
     // Point pointRes;
     // pointRes = pointA; // pointRes.operator=(pointA);
 
-
-    std::cout << "pointRes:   " << pointRes << std::endl;
-    std::cout << "pointA:     " << pointA << std::endl;
+    // std::cout << "pointRes:   " << pointRes << std::endl;
+    // std::cout << "pointA:     " << pointA << std::endl;
 
     return 0;
 }
